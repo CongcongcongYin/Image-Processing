@@ -1,0 +1,1 @@
+function [Huffman_dictionary, CR, imc] = Huffman_compress (im)

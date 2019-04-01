@@ -1,0 +1,28 @@
+ X1=imread('lenna512_low_dynamic_range.bmp');
+ figure,
+ imshow(X1)
+ x0=0;g0=0;%???????????
+ x1=20;g1=10;
+ x2=180;g2=230;
+ figure,plot([x0,x1,x2,f3],[g0,g1,g2,g3])
+ axis tight,xlabel('f'),ylabel('g')
+ title('intensitytransformation')%??????
+ r1=g1/x1;
+ r2=(g2-g1)/(x2-x1);
+ r3=(255-g2)/(255-x2);
+ [m,n]=size(X1);
+ X2=double(X1);
+ for i=1:m
+ for j=1:n
+ f=X2(i,j);
+ g(i,j)=0;
+ if(f<x1)
+ g(i,j)=r1*f;
+ elseif(f>=x1)&(f<=x2)
+ g(i,j)=r2*(f-x1)+g1;
+ elseif(f>=x2)
+ g(i,j)=r3*(f-x2)+g2;
+ end
+ end
+ end
+ figure,imshow(mat2gray(g))

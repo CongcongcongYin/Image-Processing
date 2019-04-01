@@ -1,0 +1,1 @@
+function [imo] = Huffman_decompression (Huffman_dictionary, imc)
